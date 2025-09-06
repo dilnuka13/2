@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DE Education - Advanced Level Resources</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sinhala:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        sinhala: ['Noto Sinhala', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-light': 'bounce 1s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-light: #14b8a6;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sinhala { font-family: 'Noto Sinhala', sans-serif; }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+        
+        /* Marquee */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background-color: #fefcbf;
+            padding: 0.5rem 0;
+            border-radius: 0.5rem;
+            border: 1px solid #fcd34d;
+        }
+        
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 30s linear infinite;
+            color: #b45309;
+            font-weight: 500;
+        }
+        
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+        /* Countdown */
+        .countdown-container {
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid #34d399;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-title {
+            font-weight: bold;
+            color: #065f46;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 2rem;
+            color: #047857;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        
+        .countdown-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent !important;
+            padding: 0.5rem !important;
+            min-width: 100px !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+        
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #047857;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #a7f3d0;
+        }
+        
+        .circle svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+        
+        .circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke: #34d399;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1s linear;
+        }
+        
+        .countdown-item span:last-child {
+            display: block;
+            font-size: 0.9rem;
+            color: #065f46;
+            margin-top: 0.4rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            max-height: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+        
+        /* Timetable */
+        .timetable-calendar {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+            text-align: center;
+        }
+        
+        .calendar-day {
+            background-color: #fff;
+            padding: 0.75rem 0.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .calendar-day .text-sm {
+            font-size: 0.7rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .calendar-day .text-2xl {
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        
+        .calendar-day.exam-day {
+            border: 2px solid;
+            background-color: #065f46;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .calendar-day.exam-day.general-stream {
+            background-color: #facc15;
+            border-color: #facc15;
+            color: #44403c;
+        }
+        
+        .calendar-day.active-day {
+            background-color: #047857;
+            color: white;
+            border: 2px solid #065f46;
+        }
+        
+        .calendar-day:hover:not(.active-day) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .exam-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        .exam-details.open {
+            max-height: 1000px;
+        }
+        
+        .timetable-container {
+            min-height: 500px;
+        }
+        
+        /* Stream Colors for calendar */
+        .calendar-day.science-stream { border-color: #2563eb; }
+        .calendar-day.commerce-stream { border-color: #16a34a; }
+        .calendar-day.arts-stream { border-color: #9333ea; }
+        .calendar-day.technology-stream { border-color: #dc2626; }
+        .calendar-day.general-stream { border-color: #fbbf24; }
+        
+        /* Stream Cards */
+        .stream-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .stream-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stream-card.active {
+            border: 2px solid #047857;
+            background-color: #f0fdf4;
+        }
+        
+        .subject-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .subject-list.open {
+            max-height: 500px;
+        }
+        
+        /* Paper items */
+        .paper-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .paper-item:hover {
+            background-color: #e6fffa;
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Notice items */
+        .notice-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .notice-item:hover {
+            background-color: #f0fdf4;
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Login Modal */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .login-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .google-btn {
+            background: white;
+            color: #4285F4;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .google-btn:hover {
+            background: #f8fafc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact icons */
+        .contact-icon-wrapper {
+            background-color: #d1fae5;
+            color: #047857;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        .contact-icon-wrapper:hover {
+            transform: scale(1.1);
+            background-color: #a7f3d0;
+        }
+        
+        /* Progress bars */
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .progress-value {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back to top button */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #047857;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        #backToTopBtn:hover {
+            background-color: #065f46;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .countdown-circle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.25rem;
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus, a:focus, input:focus {
+            outline: 2px solid var(--primary-light);
+            outline-offset: 2px;
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+                color: #f1f5f9;
+            }
+            
+            .card {
+                background: #1e293b;
+                color: #f1f5f9;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Login Modal (Shown First) -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="login-container rounded-xl overflow-hidden card-hover w-full max-w-md animate__animated animate__fadeInUp">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold mb-6 text-center text-gray-800 bg-gray-50 py-3 px-4 rounded-lg">Login to Continue</h2>
+                
+                <!-- Centered hCaptcha -->
+                <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+                    <div class="h-captcha" data-sitekey="2b2071d4-7eba-4f22-a38a-f36e34ca9ba6"></div>
+                </div>
+
+                <!-- Enhanced Google Login Button -->
+                <button onclick="googleLogin()" class="w-full flex items-center justify-center google-btn px-6 py-3 rounded-lg font-medium transition-colors mb-4 hover:shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <span id="googleLoginText" class="font-medium">Login with Google</span>
+                </button>
+
+                <!-- Language Toggle Button -->
+                <div class="flex justify-center mt-4">
+                    <button onclick="toggleLanguage()" class="text-sm text-gray-600 hover:text-emerald-700 transition-colors">
+                        <span id="languageToggleText">සිංහලට මාරු වන්න</span>
+                    </button>
+                </div>
+
+                <!-- Status Message -->
+                <p id="status" class="text-sm text-center mt-6 text-red-600"></p>
+
+                <!-- Footer Note -->
+                <p class="text-center text-gray-500 text-sm mt-8">
+                    By logging in, you agree to our Terms of Service and Privacy Policy
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until login) -->
+    <div id="mainContent" class="hidden">
+        <!-- Header Section -->
+        <header class="header text-white shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <button id="mobileMenuButton" class="md:hidden text-white mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                        <div class="flex items-center">
+                            <div class="bg-white p-2 rounded-full mr-3">
+                                <span class="text-primary-600 text-xl">📚</span>
+                            </div>
+                            <div>
+                                <h1 class="text-xl md:text-2xl font-bold" id="headerTitle">DE Education</h1>
+                                <p class="text-primary-100 text-xs md:text-sm" id="headerSubtitle">Advanced Level Resources</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="langToggle" class="bg-primary-700 hover:bg-primary-600 px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        සිංහල
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="mobile-menu mt-4 md:hidden bg-primary-700 rounded-md">
+                    <div class="flex flex-col space-y-2 p-4">
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="home">Home</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="papers">Past Papers</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="results">Results</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="timetables">Timetables</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="ethaksalawa">E-Thaksalawa</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="notices">Notices</a>
+                        <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600" data-tab="contact">Contact</a>
+                        <button onclick="logout()" class="text-left text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-2 mt-4">
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="home">Home</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="papers">Past Papers</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="results">Results</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="timetables">Timetables</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="ethaksalawa">E-Thaksalawa</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="notices">Notices</a>
+                    <a href="#" class="nav-item px-3 py-2 rounded-md text-sm font-medium" data-tab="contact">Contact</a>
+                    <button onclick="logout()" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">Logout</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-primary-500 to-primary-600 text-white py-12 md:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center hero-content">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-slide-up">Your Complete A/L Resource Platform</h2>
+                    <p class="text-primary-100 mb-8 animate-slide-up">Access past papers, timetables, results and learning resources all in one place</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-book-open mr-2"></i> Browse Resources
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-calendar-alt mr-2"></i> View Timetables
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-8 text-center" id="welcomeTitle">Welcome to DE Education</h2>
+                    
+                    <!-- Search Bar -->
+                    <div class="mb-8">
+                        <div class="flex justify-center max-w-2xl mx-auto rounded-lg overflow-hidden shadow-lg">
+                            <input type="text" id="globalSearch" placeholder="Search resources, papers, notices..." 
+                                   class="w-full p-3 md:p-4 border-none focus:outline-none focus:ring-2 focus:ring-primary-300 text-gray-800 text-base md:text-lg">
+                            <button onclick="globalSearch()" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 md:py-4 font-medium transition-colors flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                <span id="searchBtn">Search</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Urgent Message Marquee -->
+                    <div class="marquee-container mb-8">
+                        <p class="marquee-text" id="urgentMessage">All subjects are not yet added. Please try again after the update. The next update will be released on 2025.09.21.</p>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="countdown-container mb-8">
+                        <h3 class="countdown-title" id="countdownTitle">2025 A/L Start Countdown</h3>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <div class="circle">
+                                    <svg width="100" height="100">
+                                        <circle cx="50" cy="50" r="45"></circle>
+                                    </svg>
+                                    <span id="days">00</span>
+                                </div>
+                                <span id="countdownDays">Days</span>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="circle">
+                                    <svg width="100" height="100">
+                                        <circle cx="50" cy="50" r="45"></circle>
+                                    </svg>
+                                    <span id="hours">00</span>
+                                </div>
+                                <span id="countdownHours">Hours</span>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="circle">
+                                    <svg width="100" height="100">
+                                        <circle cx="50" cy="50" r="45"></circle>
+                                    </svg>
+                                    <span id="minutes">00</span>
+                                </div>
+                                <span id="countdownMinutes">Minutes</span>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="circle">
+                                    <svg width="100" height="100">
+                                        <circle cx="50" cy="50" r="45"></circle>
+                                    </svg>
+                                    <span id="seconds">00</span>
+                                </div>
+                                <span id="countdownSeconds">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Access Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="card p-6 text-center card-hover">
+                            <div class="bg-primary-100 text-primary-600 p-3 rounded-full inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-file-pdf text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Past Papers</h3>
+                            <p class="text-secondary-600 text-sm mb-4">Access A/L past papers and marking schemes</p>
+                            <a href="#" data-tab="papers" class="text-primary-600 hover:text-primary-800 font-medium">View Papers →</a>
+                        </div>
+
+                        <div class="card p-6 text-center card-hover">
+                            <div class="bg-primary-100 text-primary-600 p-3 rounded-full inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Exam Results</h3>
+                            <p class="text-secondary-600 text-sm mb-4">Check latest examination results</p>
+                            <a href="#" data-tab="results" class="text-primary-600 hover:text-primary-800 font-medium">Check Results →</a>
+                        </div>
+                        
+                        <div class="card p-6 text-center card-hover">
+                            <div class="bg-primary-100 text-primary-600 p-3 rounded-full inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-calendar-alt text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Time Tables</h3>
+                            <p class="text-secondary-600 text-sm mb-4">View and search examination timetables</p>
+                            <a href="#" data-tab="timetables" class="text-primary-600 hover:text-primary-800 font-medium">View Timetables →</a>
+                        </div>
+
+                        <div class="card p-6 text-center card-hover">
+                            <div class="bg-primary-100 text-primary-600 p-3 rounded-full inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-bullhorn text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Notices</h3>
+                            <p class="text-secondary-600 text-sm mb-4">Latest announcements and notices</p>
+                            <a href="#" data-tab="notices" class="text-primary-600 hover:text-primary-800 font-medium">View Notices →</a>
+                        </div>
+                    </div>
+
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold text-primary-800 mb-4">Recent Updates</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-plus-circle text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">New Biology Papers Added</h4>
+                                    <p class="text-secondary-600 text-sm">2022 and 2023 Biology past papers are now available</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-calendar-check text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">2025 Exam Schedule</h4>
+                                    <p class="text-secondary-600 text-sm">Preliminary exam schedule for 2025 has been published</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-exclamation-circle text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">System Maintenance</h4>
+                                    <p class="text-secondary-600 text-sm">Scheduled maintenance on September 15th, 2:00 AM - 4:00 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Papers Tab -->
+            <div id="papers" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">Past Papers</h2>
+                    <p class="text-secondary-600 mb-8">Select your stream and subject to access past examination papers and marking schemes.</p>
+
+                    <!-- Stream Selection -->
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                        <div class="stream-card card p-4 text-center cursor-pointer" data-stream="science">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full inline-flex items-center justify-center mb-3">
+                                <i class="fas fa-flask text-xl"></i>
+                            </div>
+                            <h3 class="font-medium">Science</h3>
+                        </div>
+                        <div class="stream-card card p-4 text-center cursor-pointer" data-stream="commerce">
+                            <div class="bg-green-100 text-green-600 p-3 rounded-full inline-flex items-center justify-center mb-3">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <h3 class="font-medium">Commerce</h3>
+                        </div>
+                        <div class="stream-card card p-4 text-center cursor-pointer" data-stream="arts">
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full inline-flex items-center justify-center mb-3">
+                                <i class="fas fa-palette text-xl"></i>
+                            </div>
+                            <h3 class="font-medium">Arts</h3>
+                        </div>
+                        <div class="stream-card card p-4 text-center cursor-pointer" data-stream="technology">
+                            <div class="bg-red-100 text-red-600 p-3 rounded-full inline-flex items-center justify-center mb-3">
+                                <i class="fas fa-cogs text-xl"></i>
+                            </div>
+                            <h3 class="font-medium">Technology</h3>
+                        </div>
+                        <div class="stream-card card p-4 text-center cursor-pointer" data-stream="general">
+                            <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full inline-flex items-center justify-center mb-3">
+                                <i class="fas fa-book text-xl"></i>
+                            </div>
+                            <h3 class="font-medium">General</h3>
+                        </div>
+                    </div>
+
+                    <!-- Subject Selection -->
+                    <div id="subjectSelection" class="hidden mb-8">
+                        <h3 class="text-xl font-semibold text-secondary-800 mb-4">Select Subject</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="subjectList">
+                            <!-- Subjects will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Papers List -->
+                    <div id="papersList" class="hidden">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold text-secondary-800" id="papersTitle">Past Papers</h3>
+                            <button onclick="backToSubjects()" class="text-primary-600 hover:text-primary-800 font-medium flex items-center">
+                                <i class="fas fa-arrow-left mr-2"></i> Back to Subjects
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4" id="papersContainer">
+                            <!-- Papers will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Tab -->
+            <div id="results" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">Exam Results</h2>
+                    <p class="text-secondary-600 mb-8">Check your examination results by entering your index number.</p>
+
+                    <div class="card p-6 max-w-2xl mx-auto">
+                        <div class="mb-6">
+                            <label for="indexNumber" class="block text-sm font-medium text-secondary-700 mb-2">Index Number</label>
+                            <input type="text" id="indexNumber" placeholder="Enter your index number" 
+                                   class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                        </div>
+                        <div class="mb-6">
+                            <label for="examType" class="block text-sm font-medium text-secondary-700 mb-2">Exam Type</label>
+                            <select id="examType" class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                <option value="al">Advanced Level</option>
+                                <option value="ol">Ordinary Level</option>
+                                <option value="term">Term Test</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="examYear" class="block text-sm font-medium text-secondary-700 mb-2">Exam Year</label>
+                            <select id="examYear" class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                        </div>
+                        <button onclick="checkResults()" class="btn btn-primary w-full">
+                            <i class="fas fa-search mr-2"></i> Check Results
+                        </button>
+                    </div>
+
+                    <div id="resultsContainer" class="mt-8 hidden">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-4">Results for Index: <span id="resultIndexNumber"></span></h3>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-secondary-200">
+                                    <thead class="bg-secondary-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Subject</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Marks</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-secondary-200" id="resultsTableBody">
+                                        <!-- Results will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timetables Tab -->
+            <div id="timetables" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">Exam Timetables</h2>
+                    <p class="text-secondary-600 mb-8">View and search examination timetables for different streams and years.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-4">Select Timetable</h3>
+                            <div class="mb-4">
+                                <label for="timetableStream" class="block text-sm font-medium text-secondary-700 mb-2">Stream</label>
+                                <select id="timetableStream" class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                    <option value="science">Science</option>
+                                    <option value="commerce">Commerce</option>
+                                    <option value="arts">Arts</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="timetableYear" class="block text-sm font-medium text-secondary-700 mb-2">Year</label>
+                                <select id="timetableYear" class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </div>
+                            <button onclick="loadTimetable()" class="btn btn-primary w-full">
+                                <i class="fas fa-calendar-alt mr-2"></i> Load Timetable
+                            </button>
+                        </div>
+
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-4">Upcoming Exams</h3>
+                            <div class="space-y-4" id="upcomingExams">
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-md">
+                                    <div>
+                                        <h4 class="font-medium">Chemistry - Paper I</h4>
+                                        <p class="text-sm text-secondary-600">Science Stream</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Sep 15, 2025</p>
+                                        <p class="text-sm text-secondary-600">9:00 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-md">
+                                    <div>
+                                        <h4 class="font-medium">Business Studies</h4>
+                                        <p class="text-sm text-secondary-600">Commerce Stream</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Sep 18, 2025</p>
+                                        <p class="text-sm text-secondary-600">9:00 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-md">
+                                    <div>
+                                        <h4 class="font-medium">Sinhala</h4>
+                                        <p class="text-sm text-secondary-600">Arts Stream</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Sep 20, 2025</p>
+                                        <p class="text-sm text-secondary-600">9:00 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="timetableContainer" class="timetable-container hidden">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold text-secondary-800" id="timetableTitle">Exam Timetable</h3>
+                            <button onclick="printTimetable()" class="btn btn-secondary">
+                                <i class="fas fa-print mr-2"></i> Print
+                            </button>
+                        </div>
+
+                        <div class="card p-6">
+                            <div class="timetable-calendar mb-6" id="timetableCalendar">
+                                <!-- Calendar will be populated by JavaScript -->
+                            </div>
+
+                            <div id="examDetails" class="exam-details">
+                                <!-- Exam details will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Thaksalawa Tab -->
+            <div id="ethaksalawa" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">E-Thaksalawa Integration</h2>
+                    <p class="text-secondary-600 mb-8">Access educational resources from the official E-Thaksalawa platform.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-4">Browse E-Thaksalawa</h3>
+                            <p class="text-secondary-600 mb-6">Access a wide range of educational resources provided by the Ministry of Education.</p>
+                            <a href="https://www.e-thaksalawa.moe.gov.lk" target="_blank" class="btn btn-primary w-full">
+                                <i class="fas fa-external-link-alt mr-2"></i> Visit E-Thaksalawa
+                            </a>
+                        </div>
+
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-4">Quick Links</h3>
+                            <div class="space-y-4">
+                                <a href="https://www.e-thaksalawa.moe.gov.lk/en/advanced-level" target="_blank" class="flex items-center p-3 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors">
+                                    <div class="bg-primary-100 text-primary-600 p-2 rounded-full mr-4">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">A/L Resources</h4>
+                                        <p class="text-sm text-secondary-600">Advanced Level subjects and materials</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.e-thaksalawa.moe.gov.lk/en/past-papers" target="_blank" class="flex items-center p-3 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors">
+                                    <div class="bg-primary-100 text-primary-600 p-2 rounded-full mr-4">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Past Papers</h4>
+                                        <p class="text-sm text-secondary-600">Download past examination papers</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.e-thaksalawa.moe.gov.lk/en/video-lessons" target="_blank" class="flex items-center p-3 bg-secondary-50 rounded-md hover:bg-secondary-100 transition-colors">
+                                    <div class="bg-primary-100 text-primary-600 p-2 rounded-full mr-4">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Video Lessons</h4>
+                                        <p class="text-sm text-secondary-600">Watch educational video lessons</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold text-secondary-800 mb-4">Featured E-Thaksalawa Resources</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-secondary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                                <div class="h-40 bg-primary-100 flex items-center justify-center">
+                                    <i class="fas fa-atom text-5xl text-primary-600"></i>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-2">Science Stream Resources</h4>
+                                    <p class="text-sm text-secondary-600 mb-4">Physics, Chemistry, Biology and Combined Mathematics</p>
+                                    <a href="https://www.e-thaksalawa.moe.gov.lk/en/advanced-level/science" target="_blank" class="text-primary-600 hover:text-primary-800 font-medium text-sm">Access Resources →</a>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                                <div class="h-40 bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-5xl text-green-600"></i>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-2">Commerce Stream Resources</h4>
+                                    <p class="text-sm text-secondary-600 mb-4">Business Studies, Accounting, Economics</p>
+                                    <a href="https://www.e-thaksalawa.moe.gov.lk/en/advanced-level/commerce" target="_blank" class="text-primary-600 hover:text-primary-800 font-medium text-sm">Access Resources →</a>
+                                </div>
+                            </div>
+                            <div class="bg-secondary-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                                <div class="h-40 bg-purple-100 flex items-center justify-center">
+                                    <i class="fas fa-palette text-5xl text-purple-600"></i>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-2">Arts Stream Resources</h4>
+                                    <p class="text-sm text-secondary-600 mb-4">Sinhala, History, Geography, Political Science</p>
+                                    <a href="https://www.e-thaksalawa.moe.gov.lk/en/advanced-level/arts" target="_blank" class="text-primary-600 hover:text-primary-800 font-medium text-sm">Access Resources →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notices Tab -->
+            <div id="notices" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">Notices & Announcements</h2>
+                    <p class="text-secondary-600 mb-8">Stay updated with the latest announcements and notices from the Department of Examinations.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-red-100 text-red-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold">Important Notices</h3>
+                            </div>
+                            <p class="text-secondary-600 mb-4">Critical announcements regarding examinations, deadlines, and changes.</p>
+                            <button onclick="filterNotices('important')" class="text-red-600 hover:text-red-800 font-medium">View All →</button>
+                        </div>
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold">Exam Schedules</h3>
+                            </div>
+                            <p class="text-secondary-600 mb-4">Timetables and schedule updates for upcoming examinations.</p>
+                            <button onclick="filterNotices('schedule')" class="text-blue-600 hover:text-blue-800 font-medium">View All →</button>
+                        </div>
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-100 text-green-600 p-3 rounded-full mr-4">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold">Results</h3>
+                            </div>
+                            <p class="text-secondary-600 mb-4">Announcements regarding result publication and related information.</p>
+                            <button onclick="filterNotices('results')" class="text-green-600 hover:text-green-800 font-medium">View All →</button>
+                        </div>
+                    </div>
+
+                    <div class="card p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold text-secondary-800">Latest Notices</h3>
+                            <div class="flex items-center">
+                                <label for="noticeFilter" class="text-sm font-medium text-secondary-700 mr-2">Filter:</label>
+                                <select id="noticeFilter" onchange="filterNotices(this.value)" class="p-2 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                    <option value="all">All Notices</option>
+                                    <option value="important">Important</option>
+                                    <option value="schedule">Schedules</option>
+                                    <option value="results">Results</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4" id="noticesList">
+                            <div class="notice-item p-4 border-l-4 border-red-500 bg-red-50 rounded-md cursor-pointer" data-category="important">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-medium mb-1">2025 A/L Examination Application Deadline Extended</h4>
+                                    <span class="text-xs bg-red-500 text-white px-2 py-1 rounded-full">Important</span>
+                                </div>
+                                <p class="text-sm text-secondary-600 mb-2">The deadline for application submission has been extended to September 30, 2025.</p>
+                                <p class="text-xs text-secondary-500">Published: September 5, 2025</p>
+                            </div>
+                            <div class="notice-item p-4 border-l-4 border-blue-500 bg-blue-50 rounded-md cursor-pointer" data-category="schedule">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-medium mb-1">2025 A/L Examination Time Table Released</h4>
+                                    <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">Schedule</span>
+                                </div>
+                                <p class="text-sm text-secondary-600 mb-2">The examination time table for the 2025 Advanced Level has been published.</p>
+                                <p class="text-xs text-secondary-500">Published: August 28, 2025</p>
+                            </div>
+                            <div class="notice-item p-4 border-l-4 border-green-500 bg-green-50 rounded-md cursor-pointer" data-category="results">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-medium mb-1">2024 A/L Results Available Online</h4>
+                                    <span class="text-xs bg-green-500 text-white px-2 py-1 rounded-full">Results</span>
+                                </div>
+                                <p class="text-sm text-secondary-600 mb-2">The results of the 2024 Advanced Level examination are now available online.</p>
+                                <p class="text-xs text-secondary-500">Published: August 15, 2025</p>
+                            </div>
+                            <div class="notice-item p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-md cursor-pointer" data-category="general">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-medium mb-1">New Subject Guides Available</h4>
+                                    <span class="text-xs bg-yellow-500 text-white px-2 py-1 rounded-full">General</span>
+                                </div>
+                                <p class="text-sm text-secondary-600 mb-2">New subject guides for the revised curriculum are now available for download.</p>
+                                <p class="text-xs text-secondary-500">Published: August 10, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <div class="animate__animated animate__fadeIn">
+                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-800 mb-6">Contact Us</h2>
+                    <p class="text-secondary-600 mb-8">Get in touch with us for any queries or support regarding the platform.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-6">Send us a Message</h3>
+                            <form id="contactForm">
+                                <div class="mb-4">
+                                    <label for="name" class="block text-sm font-medium text-secondary-700 mb-2">Your Name</label>
+                                    <input type="text" id="name" required 
+                                           class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-sm font-medium text-secondary-700 mb-2">Email Address</label>
+                                    <input type="email" id="email" required 
+                                           class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="subject" class="block text-sm font-medium text-secondary-700 mb-2">Subject</label>
+                                    <input type="text" id="subject" required 
+                                           class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-sm font-medium text-secondary-700 mb-2">Message</label>
+                                    <textarea id="message" rows="5" required 
+                                              class="w-full p-3 border border-secondary-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-300 text-secondary-800"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-full">
+                                    <i class="fas fa-paper-plane mr-2"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold text-secondary-800 mb-6">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="contact-icon-wrapper p-3 rounded-full mr-4">
+                                        <i class="fas fa-map-marker-alt text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">Address</h4>
+                                        <p class="text-secondary-600">Department of Examinations,<br>Colombo 07, Sri Lanka</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon-wrapper p-3 rounded-full mr-4">
+                                        <i class="fas fa-phone-alt text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">Phone</h4>
+                                        <p class="text-secondary-600">+94 11 278 4200</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon-wrapper p-3 rounded-full mr-4">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">Email</h4>
+                                        <p class="text-secondary-600">info@deeducation.lk</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="contact-icon-wrapper p-3 rounded-full mr-4">
+                                        <i class="fas fa-clock text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">Working Hours</h4>
+                                        <p class="text-secondary-600">Monday - Friday: 8:30 AM - 4:15 PM<br>Saturday & Sunday: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8">
+                                <h4 class="font-medium mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="contact-icon-wrapper p-3 rounded-full">
+                                        <i class="fab fa-facebook-f text-lg"></i>
+                                    </a>
+                                    <a href="#" class="contact-icon-wrapper p-3 rounded-full">
+                                        <i class="fab fa-twitter text-lg"></i>
+                                    </a>
+                                    <a href="#" class="contact-icon-wrapper p-3 rounded-full">
+                                        <i class="fab fa-instagram text-lg"></i>
+                                    </a>
+                                    <a href="#" class="contact-icon-wrapper p-3 rounded-full">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold text-secondary-800 mb-6">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="faq-item border-b border-secondary-200 pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium" onclick="toggleFaq(this)">
+                                    <span>How can I download past papers?</span>
+                                    <i class="fas fa-chevron-down text-primary-600"></i>
+                                </button>
+                                <div class="faq-answer mt-2 text-secondary-600 hidden">
+                                    You can download past papers by selecting your stream and subject from the Past Papers section. Once you select a subject, you'll see available past papers that you can download in PDF format.
+                                </div>
+                            </div>
+                            <div class="faq-item border-b border-secondary-200 pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium" onclick="toggleFaq(this)">
+                                    <span>How do I check my exam results?</span>
+                                    <i class="fas fa-chevron-down text-primary-600"></i>
+                                </button>
+                                <div class="faq-answer mt-2 text-secondary-600 hidden">
+                                    Go to the Results section and enter your index number. Select the exam type and year, then click "Check Results" to view your results.
+                                </div>
+                            </div>
+                            <div class="faq-item border-b border-secondary-200 pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium" onclick="toggleFaq(this)">
+                                    <span>Are the resources on this platform free?</span>
+                                    <i class="fas fa-chevron-down text-primary-600"></i>
+                                </button>
+                                <div class="faq-answer mt-2 text-secondary-600 hidden">
+                                    Yes, all resources on DE Education are completely free for students. We believe in providing equal educational opportunities for all.
+                                </div>
+                            </div>
+                            <div class="faq-item border-b border-secondary-200 pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium" onclick="toggleFaq(this)">
+                                    <span>How often is the content updated?</span>
+                                    <i class="fas fa-chevron-down text-primary-600"></i>
+                                </button>
+                                <div class="faq-answer mt-2 text-secondary-600 hidden">
+                                    We regularly update our content with new past papers, timetables, and resources. Major updates are typically done at the beginning of each examination cycle.
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="flex justify-between items-center w-full text-left font-medium" onclick="toggleFaq(this)">
+                                    <span>Can I request specific resources?</span>
+                                    <i class="fas fa-chevron-down text-primary-600"></i>
+                                </button>
+                                <div class="faq-answer mt-2 text-secondary-600 hidden">
+                                    Yes, you can request specific resources by contacting us through the contact form. We'll do our best to add requested materials in future updates.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-secondary-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">DE Education</h3>
+                        <p class="text-secondary-300 mb-4">Your complete resource platform for Advanced Level examinations in Sri Lanka.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary-300 hover:text-white transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-secondary-300 hover:text-white transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-secondary-300 hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-secondary-300 hover:text-white transition-colors">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-tab="home" class="text-secondary-300 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#" data-tab="papers" class="text-secondary-300 hover:text-white transition-colors">Past Papers</a></li>
+                            <li><a href="#" data-tab="results" class="text-secondary-300 hover:text-white transition-colors">Results</a></li>
+                            <li><a href="#" data-tab="timetables" class="text-secondary-300 hover:text-white transition-colors">Timetables</a></li>
+                            <li><a href="#" data-tab="notices" class="text-secondary-300 hover:text-white transition-colors">Notices</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-tab="ethaksalawa" class="text-secondary-300 hover:text-white transition-colors">E-Thaksalawa</a></li>
+                            <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Subject Guides</a></li>
+                            <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Revision Notes</a></li>
+                            <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Model Papers</a></li>
+                            <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Learning Videos</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-secondary-300 mr-2 mt-1"></i>
+                                <span class="text-secondary-300">Department of Examinations, Colombo 07, Sri Lanka</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone-alt text-secondary-300 mr-2 mt-1"></i>
+                                <span class="text-secondary-300">+94 11 278 4200</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope text-secondary-300 mr-2 mt-1"></i>
+                                <span class="text-secondary-300">info@deeducation.lk</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-secondary-800 mt-8 pt-8 text-center text-secondary-400">
+                    <p>&copy; 2025 DE Education. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" title="Go to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDk3X6Qv6U5pLp4v3H3b3b3b3b3b3b3b3b3b3b3b",
+            authDomain: "de-education-platform.firebaseapp.com",
+            projectId: "de-education-platform",
+            storageBucket: "de-education-platform.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:3b3b3b3b3b3b3b3b3b3b3b",
+            measurementId: "G-3B3B3B3B3B"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        // Initialize EmailJS
+        emailjs.init("user_xxxxxxxxxxxxxxxx");
+
+        // Language state
+        let isSinhala = false;
+        let currentUser = null;
+
+        // DOM Elements
+        const loginModal = document.getElementById('loginModal');
+        const mainContent = document.getElementById('mainContent');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const langToggle = document.getElementById('langToggle');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const tabLinks = document.querySelectorAll('[data-tab]');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize countdown timer
+            initializeCountdown();
+            
+            // Initialize mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Initialize tab navigation
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Initialize back to top button
+            window.addEventListener('scroll', toggleBackToTopButton);
+            backToTopBtn.addEventListener('click', scrollToTop);
+
+            // Initialize contact form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactFormSubmit);
+            }
+
+            // Check if user is already logged in
+            checkAuthState();
+        });
+
+        // Firebase Authentication Functions
+        function checkAuthState() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in
+                    currentUser = user;
+                    loginModal.classList.add('hidden');
+                    mainContent.classList.remove('hidden');
+                    
+                    // Log login event to analytics
+                    firebase.analytics().logEvent('login', {
+                        method: 'Google'
+                    });
+                } else {
+                    // User is signed out
+                    currentUser = null;
+                    loginModal.classList.remove('hidden');
+                    mainContent.classList.add('hidden');
+                }
+            });
+        }
+
+        function googleLogin() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            // Verify hCaptcha first
+            const hcaptchaResponse = hcaptcha.getResponse();
+            if (!hcaptchaResponse) {
+                document.getElementById('status').textContent = 'Please complete the captcha verification.';
+                return;
+            }
+            
+            firebase.auth().signInWithPopup(provider)
+                .then(function(result) {
+                    // Successful login
+                    document.getElementById('status').textContent = '';
+                })
+                .catch(function(error) {
+                    // Handle errors
+                    console.error('Login error:', error);
+                    document.getElementById('status').textContent = 'Login failed. Please try again.';
+                });
+        }
+
+        function logout() {
+            firebase.auth().signOut()
+                .then(function() {
+                    // Sign-out successful
+                    console.log('User signed out');
+                })
+                .catch(function(error) {
+                    // An error happened
+                    console.error('Logout error:', error);
+                });
+        }
+
+        // Language Toggle Functions
+        function toggleLanguage() {
+            isSinhala = !isSinhala;
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            if (isSinhala) {
+                // Switch to Sinhala
+                document.getElementById('headerTitle').textContent = 'DE අධ්‍යාපනය';
+                document.getElementById('headerSubtitle').textContent = 'උසස් පෙල සම්පත්';
+                langToggle.textContent = 'English';
+                document.getElementById('welcomeTitle').textContent = 'DE අධ්‍යාපනයට සාදරයෙන් පිළිගනිමු';
+                document.getElementById('searchBtn').textContent = 'සොයන්න';
+                document.getElementById('urgentMessage').textContent = 'සියලුම විෂයයන් තවමත් එක් කර නොමැත. යාවත්කාලීන කිරීමෙන් පසු නැවත උත්සාහ කරන්න. ඊළඟ යාවත්කාලීන කිරීම 2025.09.21 දින නිකුත් කෙරේ.';
+                document.getElementById('countdownTitle').textContent = '2025 උසස් පෙල ආරම්භයට';
+                document.getElementById('countdownDays').textContent = 'දින';
+                document.getElementById('countdownHours').textContent = 'පැය';
+                document.getElementById('countdownMinutes').textContent = 'මිනිත්තු';
+                document.getElementById('countdownSeconds').textContent = 'තත්පර';
+                document.getElementById('googleLoginText').textContent = 'Google සමග පිවිසෙන්න';
+                document.getElementById('languageToggleText').textContent = 'Switch to English';
+            } else {
+                // Switch to English
+                document.getElementById('headerTitle').textContent = 'DE Education';
+                document.getElementById('headerSubtitle').textContent = 'Advanced Level Resources';
+                langToggle.textContent = 'සිංහල';
+                document.getElementById('welcomeTitle').textContent = 'Welcome to DE Education';
+                document.getElementById('searchBtn').textContent = 'Search';
+                document.getElementById('urgentMessage').textContent = 'All subjects are not yet added. Please try again after the update. The next update will be released on 2025.09.21.';
+                document.getElementById('countdownTitle').textContent = '2025 A/L Start Countdown';
+                document.getElementById('countdownDays').textContent = 'Days';
+                document.getElementById('countdownHours').textContent = 'Hours';
+                document.getElementById('countdownMinutes').textContent = 'Minutes';
+                document.getElementById('countdownSeconds').textContent = 'Seconds';
+                document.getElementById('googleLoginText').textContent = 'Login with Google';
+                document.getElementById('languageToggleText').textContent = 'සිංහලට මාරු වන්න';
+            }
+        }
+
+        // Tab Navigation Functions
+        function switchTab(tabId) {
+            // Hide all tab contents
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Close mobile menu if open
+            mobileMenu.classList.remove('active');
+        }
+
+        // Countdown Timer Functions
+        function initializeCountdown() {
+            // Set the date we're counting down to (September 1, 2025)
+            const countDownDate = new Date("Sep 1, 2025 09:00:00").getTime();
+
+            // Update the countdown every 1 second
+            const countdownFunction = setInterval(function() {
+                // Get today's date and time
+                const now = new Date().getTime();
+                
+                // Find the distance between now and the count down date
+                const distance = countDownDate - now;
+                
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Display the result
+                document.getElementById("days").innerHTML = days;
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
+                
+                // Update progress circles
+                updateProgressCircle('days', days, 365, 45);
+                updateProgressCircle('hours', hours, 24, 45);
+                updateProgressCircle('minutes', minutes, 60, 45);
+                updateProgressCircle('seconds', seconds, 60, 45);
+                
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdownTitle").innerHTML = "2025 A/L Exams Have Started!";
+                    document.getElementById("days").innerHTML = "0";
+                    document.getElementById("hours").innerHTML = "0";
+                    document.getElementById("minutes").innerHTML = "0";
+                    document.getElementById("seconds").innerHTML = "0";
+                }
+            }, 1000);
+        }
+
+        function updateProgressCircle(unit, value, max, radius) {
+            const circles = document.querySelectorAll(`#${unit} circle`);
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (value / max) * circumference;
+            
+            circles.forEach(circle => {
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                circle.style.strokeDashoffset = offset;
+            });
+        }
+
+        // Back to Top Functions
+        function toggleBackToTopButton() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+        // Contact Form Functions
+        function handleContactFormSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Send email using EmailJS
+            emailjs.send("service_xxxxxxxx", "template_xxxxxxxx", {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message
+            })
+            .then(function(response) {
+                alert('Your message has been sent successfully!');
+                document.getElementById('contactForm').reset();
+            }, function(error) {
+                alert('Failed to send your message. Please try again later.');
+                console.error('EmailJS error:', error);
+            });
+        }
+
+        // Global Search Function
+        function globalSearch() {
+            const searchTerm = document.getElementById('globalSearch').value.trim();
+            
+            if (searchTerm) {
+                // Log search event to analytics
+                firebase.analytics().logEvent('search', {
+                    search_term: searchTerm
+                });
+                
+                alert(`Searching for: ${searchTerm}\n\nThis feature is under development. All resources will be available after the next update.`);
+            }
+        }
+
+        // Past Papers Functions
+        const streamData = {
+            science: ["Physics", "Chemistry", "Biology", "Combined Mathematics", "Information and Communication Technology"],
+            commerce: ["Business Studies", "Accounting", "Economics", "Business Statistics"],
+            arts: ["Sinhala", "History", "Geography", "Political Science", "Buddhism", "English", "Tamil"],
+            technology: ["Engineering Technology", "Bio Systems Technology", "Science for Technology"],
+            general: ["General English", "General Tamil", "Common General Test"]
+        };
+
+        const paperData = {
+            Physics: [
+                { year: 2023, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2023, paper: "II", medium: "Sinhala", url: "#" },
+                { year: 2022, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2022, paper: "II", medium: "Sinhala", url: "#" },
+                { year: 2021, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2021, paper: "II", medium: "Sinhala", url: "#" }
+            ],
+            Chemistry: [
+                { year: 2023, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2023, paper: "II", medium: "Sinhala", url: "#" },
+                { year: 2022, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2022, paper: "II", medium: "Sinhala", url: "#" }
+            ],
+            Biology: [
+                { year: 2023, paper: "I", medium: "Sinhala", url: "#" },
+                { year: 2023, paper: "II", medium: "Sinhala", url: "#" },
+                { year: 2022, paper: "I", medium: "Sinhala", url: "#" }
+            ]
+        };
+
+        document.querySelectorAll('.stream-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const stream = this.getAttribute('data-stream');
+                loadSubjects(stream);
+            });
+        });
+
+        function loadSubjects(stream) {
+            const subjectList = document.getElementById('subjectList');
+            subjectList.innerHTML = '';
+            
+            streamData[stream].forEach(subject => {
+                const subjectElement = document.createElement('div');
+                subjectElement.className = 'card p-4 text-center cursor-pointer subject-item';
+                subjectElement.setAttribute('data-subject', subject);
+                subjectElement.innerHTML = `
+                    <h4 class="font-medium">${subject}</h4>
+                    <p class="text-secondary-600 text-sm mt-2">Click to view papers</p>
+                `;
+                
+                subjectElement.addEventListener('click', function() {
+                    loadPapers(subject);
+                });
+                
+                subjectList.appendChild(subjectElement);
+            });
+            
+            document.getElementById('subjectSelection').classList.remove('hidden');
+            document.getElementById('papersList').classList.add('hidden');
+        }
+
+        function loadPapers(subject) {
+            const papersContainer = document.getElementById('papersContainer');
+            papersContainer.innerHTML = '';
+            
+            if (paperData[subject]) {
+                paperData[subject].forEach(paper => {
+                    const paperElement = document.createElement('div');
+                    paperElement.className = 'paper-item card p-4 flex justify-between items-center';
+                    paperElement.innerHTML = `
+                        <div>
+                            <h4 class="font-medium">${subject} - Paper ${paper.paper} (${paper.year})</h4>
+                            <p class="text-secondary-600 text-sm">Medium: ${paper.medium}</p>
+                        </div>
+                        <a href="${paper.url}" class="btn btn-primary" download>
+                            <i class="fas fa-download mr-2"></i> Download
+                        </a>
+                    `;
+                    papersContainer.appendChild(paperElement);
+                });
+            } else {
+                papersContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-file-alt text-4xl text-secondary-400 mb-4"></i>
+                        <p class="text-secondary-600">No papers available for ${subject} yet.</p>
+                        <p class="text-secondary-500 text-sm mt-2">Check back after the next update.</p>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('papersTitle').textContent = `${subject} Past Papers`;
+            document.getElementById('subjectSelection').classList.add('hidden');
+            document.getElementById('papersList').classList.remove('hidden');
+        }
+
+        function backToSubjects() {
+            document.getElementById('subjectSelection').classList.remove('hidden');
+            document.getElementById('papersList').classList.add('hidden');
+        }
+
+        // Results Functions
+        function checkResults() {
+            const indexNumber = document.getElementById('indexNumber').value.trim();
+            const examType = document.getElementById('examType').value;
+            const examYear = document.getElementById('examYear').value;
+            
+            if (!indexNumber) {
+                alert('Please enter your index number.');
+                return;
+            }
+            
+            // Simulate results (in a real application, this would fetch from an API)
+            const results = simulateResults(indexNumber, examType, examYear);
+            
+            document.getElementById('resultIndexNumber').textContent = indexNumber;
+            
+            const tableBody = document.getElementById('resultsTableBody');
+            tableBody.innerHTML = '';
+            
+            results.forEach(result => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-secondary-800">${result.subject}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-600">${result.marks}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold ${getGradeColor(result.grade)}">${result.grade}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            document.getElementById('resultsContainer').classList.remove('hidden');
+            
+            // Log results check event to analytics
+            firebase.analytics().logEvent('check_results', {
+                exam_type: examType,
+                exam_year: examYear
+            });
+        }
+
+        function simulateResults(indexNumber, examType, examYear) {
+            // This is a simulation - in a real app, you would fetch from an API
+            const subjects = {
+                al: ["Chemistry", "Physics", "Combined Mathematics", "Information and Communication Technology"],
+                ol: ["Mathematics", "Science", "Sinhala", "English", "History", "Buddhism", "Geography", "Health", "ICT", "English Literature", "Sinhala Literature"],
+                term: ["Chemistry", "Physics", "Combined Mathematics", "English"]
+            };
+            
+            return subjects[examType].map(subject => {
+                const marks = Math.floor(Math.random() * 40) + 60; // Random marks between 60-100
+                let grade;
+                
+                if (marks >= 85) grade = "A";
+                else if (marks >= 70) grade = "B";
+                else if (marks >= 55) grade = "C";
+                else if (marks >= 40) grade = "S";
+                else grade = "F";
+                
+                return { subject, marks, grade };
+            });
+        }
+
+        function getGradeColor(grade) {
+            switch(grade) {
+                case "A": return "text-green-600";
+                case "B": return "text-blue-600";
+                case "C": return "text-yellow-600";
+                case "S": return "text-orange-600";
+                case "F": return "text-red-600";
+                default: return "text-secondary-600";
+            }
+        }
+
+        // Timetable Functions
+        function loadTimetable() {
+            const stream = document.getElementById('timetableStream').value;
+            const year = document.getElementById('timetableYear').value;
+            
+            document.getElementById('timetableTitle').textContent = `${stream.charAt(0).toUpperCase() + stream.slice(1)} Stream Timetable - ${year}`;
+            document.getElementById('timetableContainer').classList.remove('hidden');
+            
+            generateTimetableCalendar(stream, year);
+            
+            // Log timetable view event to analytics
+            firebase.analytics().logEvent('view_timetable', {
+                stream: stream,
+                year: year
+            });
+        }
+
+        function generateTimetableCalendar(stream, year) {
+            const calendarContainer = document.getElementById('timetableCalendar');
+            calendarContainer.innerHTML = '';
+            
+            // Sample exam dates for demonstration
+            const examDates = [
+                { date: '2025-09-15', subject: 'Chemistry - Paper I', stream: 'science' },
+                { date: '2025-09-17', subject: 'Physics - Paper I', stream: 'science' },
+                { date: '2025-09-19', subject: 'Combined Mathematics - Paper I', stream: 'science' },
+                { date: '2025-09-22', subject: 'Biology - Paper I', stream: 'science' },
+                { date: '2025-09-24', subject: 'ICT - Paper I', stream: 'science' },
+                { date: '2025-09-15', subject: 'Business Studies - Paper I', stream: 'commerce' },
+                { date: '2025-09-18', subject: 'Accounting - Paper I', stream: 'commerce' },
+                { date: '2025-09-20', subject: 'Economics - Paper I', stream: 'commerce' },
+                { date: '2025-09-15', subject: 'Sinhala - Paper I', stream: 'arts' },
+                { date: '2025-09-17', subject: 'History - Paper I', stream: 'arts' },
+                { date: '2025-09-19', subject: 'Geography - Paper I', stream: 'arts' }
+            ];
+            
+            // Filter exams by selected stream
+            const streamExams = examDates.filter(exam => exam.stream === stream);
+            
+            // Generate calendar days for September 2025
+            for (let i = 1; i <= 30; i++) {
+                const dateStr = `2025-09-${i.toString().padStart(2, '0')}`;
+                const date = new Date(dateStr);
+                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Check if this date has an exam
+                const exam = streamExams.find(e => e.date === dateStr);
+                
+                if (exam) {
+                    dayElement.classList.add('exam-day', `${stream}-stream`);
+                    dayElement.setAttribute('data-date', dateStr);
+                    dayElement.setAttribute('data-subject', exam.subject);
+                    
+                    dayElement.addEventListener('click', function() {
+                        showExamDetails(this.getAttribute('data-date'), this.getAttribute('data-subject'));
+                    });
+                }
+                
+                dayElement.innerHTML = `
+                    <div class="text-sm">${dayOfWeek}</div>
+                    <div class="text-2xl">${i}</div>
+                `;
+                
+                calendarContainer.appendChild(dayElement);
+            }
+        }
+
+        function showExamDetails(date, subject) {
+            const examDetails = document.getElementById('examDetails');
+            
+            examDetails.innerHTML = `
+                <div class="bg-primary-50 p-4 rounded-md">
+                    <h4 class="font-semibold text-lg text-primary-800 mb-2">Exam Details</h4>
+                    <p class="text-primary-700"><span class="font-medium">Date:</span> ${formatDate(date)}</p>
+                    <p class="text-primary-700"><span class="font-medium">Subject:</span> ${subject}</p>
+                    <p class="text-primary-700"><span class="font-medium">Time:</span> 9:00 AM - 12:00 PM</p>
+                    <p class="text-primary-700"><span class="font-medium">Duration:</span> 3 hours</p>
+                </div>
+            `;
+            
+            examDetails.classList.add('open');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function printTimetable() {
+            window.print();
+        }
+
+        // Notices Functions
+        function filterNotices(category) {
+            const notices = document.querySelectorAll('.notice-item');
+            
+            notices.forEach(notice => {
+                if (category === 'all' || notice.getAttribute('data-category') === category) {
+                    notice.style.display = 'block';
+                } else {
+                    notice.style.display = 'none';
+                }
+            });
+        }
+
+        // FAQ Functions
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+</html>
