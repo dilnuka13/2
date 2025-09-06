@@ -1522,27 +1522,32 @@
             });
         }
 
-        function googleLogin() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            
-            // Verify hCaptcha first
-            const hcaptchaResponse = hcaptcha.getResponse();
-            if (!hcaptchaResponse) {
-                document.getElementById('status').textContent = 'Please complete the captcha verification.';
-                return;
-            }
-            
-            firebase.auth().signInWithPopup(provider)
-                .then(function(result) {
-                    // Successful login
-                    document.getElementById('status').textContent = '';
-                })
-                .catch(function(error) {
-                    // Handle errors
-                    console.error('Login error:', error);
-                    document.getElementById('status').textContent = 'Login failed. Please try again.';
-                });
-        }
+function googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    // Reset any previous status messages
+    document.getElementById('status').textContent = '';
+    
+    // Programmatically execute the hCaptcha challenge
+    hcaptcha.execute().then(function(hcaptchaResponse) {
+        // hCaptcha was successfully completed, now proceed with Firebase login
+        firebase.auth().signInWithPopup(provider)
+            .then(function(result) {
+                // Successful login
+                console.log('Login successful:', result.user);
+            })
+            .catch(function(error) {
+                // Handle Firebase login errors
+                console.error('Login error:', error);
+                document.getElementById('status').textContent = 'Login failed. Please try again.';
+            });
+    })
+    .catch(function(error) {
+        // Handle hCaptcha errors (e.g., user closing the challenge)
+        console.error('hCaptcha error:', error);
+        document.getElementById('status').textContent = 'Please complete the captcha verification to log in.';
+    });
+}
 
         function logout() {
             firebase.auth().signOut()
@@ -2014,4 +2019,5 @@
         }
     </script>
 </body>
+
 </html>
